@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def norm_data(data):
     min_val = np.min(data, axis=0)
     max_val = np.max(data, axis=0)
@@ -36,7 +37,7 @@ class modelo:
         self.weights = self.weights - self.alpha * derivatives
 
     def train(self, x, y):
-        np.random.seed(11) # para que al correr el prof mismo result.
+        np.random.seed(11)  # para que al correr el prof mismo result.
         loss_vec = []
         self.weights = np.random.rand(x.shape[1])
 
@@ -53,5 +54,7 @@ class modelo:
     def predict(self, x):
         probabilities = self.s(x)
         return np.round(probabilities)
-    
 
+    def predict_decimals(self, x):
+        probabilities = self.s(x)
+        return np.round(probabilities, 4)
